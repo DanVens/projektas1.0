@@ -1,0 +1,46 @@
+#include "bibliotekos.h"
+#include "struktura.h"
+int main()
+{
+    vector<studentas> S;
+    int dydis = 1;
+    int n = 1;
+    string taip, mv;
+    for (int i = 0; i < n; i++)
+    {
+        pildymas(S);
+        rusiavimas(S[i]);
+        rusiavimasStudentu(S);
+        while (true)
+        {
+            if (S[i].metodas == "")
+            {
+                cout << "jei norite galutinio rezultato, suskaiciuoto pagal vidurki, iveskite v ir enter, jei norite pagal mediana, iveskite m ir enter: ";
+                cin >> mv;
+                S[i].metodas = mv;
+            }
+            if (S[i].metodas == "v")
+            {
+                //cout << S[i].vidurkis << endl;
+                Spausdinimas(S);
+                break;
+            }
+            else if (S[i].metodas == "m")
+            {
+                //cout << S[i].vidurkis << endl;
+                Spausdinimas(S);
+                break;
+            }
+            cout << "netinkami duomenys, bandykite vel\n";
+            S[i].metodas = "";
+        }
+        cout << "jeigu norite ivesti dar viena studenta ar faila, iveskite y ir spauskite enter, jei ne, iveskite bet koki kita simboli ir spauskite enter: ";
+        cin >> taip;
+        if (taip == "y")
+        {
+            n = S.size();
+            i = S.size()-2;
+
+        }
+    }
+}
