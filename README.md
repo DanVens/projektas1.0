@@ -1,1 +1,1 @@
-# projektas1.0
+įvykdytas 0.2 versijos reorganizavimas
