@@ -1,0 +1,72 @@
+#include "bibliotekos.h"
+#include "struktura.h"
+int main()
+{
+    auto start = std::chrono::high_resolution_clock::now();
+    vector<studentas> S;
+    int dydis = 1;
+    int n = 1;
+    string taip, mv;
+    int pazsk = 0;
+    for (int i = 0; i < n; i++)
+    {
+        cout << "iveskite y, jei noretumete ivesti duomenis is 5 failu, iveskite bet koki kita simboli, jei noretumete testi: ";
+        cin >> taip;
+        if (taip == "y")
+        {
+            FailuGeneravimas(pazsk);
+            perrasymas(pazsk);
+            cout << "jei norite testi su kitais ivedimo budais, iveskite y, kitu atveju iveskite bet koki kita simboli ";
+            cin >> taip;
+            if (taip != "y")
+            {
+                auto stop = std::chrono::high_resolution_clock::now();
+                auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+                cout << "programa veike " << duration.count() / 1000.0 << "s";
+                break;
+            }
+
+        }
+        pildymas(S);
+        rusiavimas(S[i]);
+        rusiavimasStudentu(S);
+        while (true)
+        {
+            if (S[i].metodas == "")
+            {
+                cout << "jei norite galutinio rezultato, suskaiciuoto pagal vidurki, iveskite v ir enter, jei norite pagal mediana, iveskite m ir enter: ";
+                cin >> mv;
+                S[i].metodas = mv;
+            }
+            if (S[i].metodas == "v")
+            {
+                //cout << S[i].vidurkis << endl;
+                Spausdinimas(S);
+                break;
+            }
+            else if (S[i].metodas == "m")
+            {
+                //cout << S[i].vidurkis << endl;
+                Spausdinimas(S);
+                break;
+            }
+            cout << "netinkami duomenys, bandykite vel\n";
+            S[i].metodas = "";
+        }
+        cout << "jeigu norite ivesti dar viena studenta ar faila, iveskite y ir spauskite enter, jei ne, iveskite bet koki kita simboli ir spauskite enter: ";
+        cin >> taip;
+        if (taip == "y")
+        {
+            n = S.size();
+            i = S.size() - 2;
+
+        }
+        else
+        {
+            auto stop = std::chrono::high_resolution_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+            cout << "programa veike " << duration.count() / 1000.0 << "s";
+            break;
+        }
+    }
+}
